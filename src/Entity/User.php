@@ -14,7 +14,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"email"}, message="L'email {{ value }} est déjà utilisée.")
- * @ApiResource()
+ * @ApiResource(
+ *      normalizationContext={"groups"={"users_read"}}
+ * )
  */
 class User implements UserInterface
 {
@@ -22,13 +24,13 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"customers_read", "invoices_read", "invoices_subresource"})
+     * @Groups({"users_read", "customers_read", "invoices_read", "invoices_subresource"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"customers_read", "invoices_read", "invoices_subresource"})
+     * @Groups({"users_read", "customers_read", "invoices_read", "invoices_subresource"})
      * @Assert\NotBlank(message="L'email doit être renseigné.")
      * @Assert\Email(message="Le format de l'email doit être valide.")
      */
@@ -48,7 +50,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"customers_read", "invoices_read", "invoices_subresource"})
+     * @Groups({"users_read", "customers_read", "invoices_read", "invoices_subresource"})
      * @Assert\NotBlank(message="Le prénom est obligatoire.")
      * @Assert\Length(min=3, max=255, minMessage="Le prenom doit faire entre 3 et 255 caractères.", maxMessage="Le prenom doit faire entre 3 et 255 caractères.")
      */
@@ -56,7 +58,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"customers_read", "invoices_read", "invoices_subresource"})
+     * @Groups({"users_read", "customers_read", "invoices_read", "invoices_subresource"})
      * @Assert\NotBlank(message="Le nom est obligatoire.")
      * @Assert\Length(min=3, max=255, minMessage="Le nom doit faire entre 3 et 255 caractères.", maxMessage="Le nom doit faire entre 3 et 255 caractères.")
      */
