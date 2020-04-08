@@ -67,7 +67,7 @@ class Invoice
     /**
      * @ORM\Column(type="datetime")
      * @Groups({"invoices_read", "invoices_subresource"})
-     * @Assert\DateTime(message="La date doit être au format YYYY-MM-DD.")
+     * @Assert\Type(type="\DateTimeInterface", message="La date doit être au format YYYY-MM-DD.")
      * @Assert\NotBlank(message="La date d'envoie doit être renseignée.")
      */
     private $sentAt;
