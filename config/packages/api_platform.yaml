@@ -1,8 +1,29 @@
 api_platform:
+    title: "API Courses"
+    description: "API de Symreact"
+    version: "1.0.0"
+    show_webby: false
+    # Enable the Swagger documentation and export.
+    enable_swagger: true
+
+    # Enable Swagger ui.
+    enable_swagger_ui: true
+
+    # Enable ReDoc.
+    enable_re_doc: false
+
+    # Enable the entrypoint.
+    enable_entrypoint: true
+
+    # Enable the docs.
+    enable_docs: true
+
+    # Enable the data collector and the WebProfilerBundle integration.
+    enable_profiler: true
     mapping:
-        paths: ['%kernel.project_dir%/src/Entity']
+        paths: ["%kernel.project_dir%/src/Entity"]
     patch_formats:
-        json: ['application/merge-patch+json']
+        json: ["application/merge-patch+json"]
     swagger:
         versions: [3]
     collection:
