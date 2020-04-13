@@ -32,7 +32,7 @@ const CustomersPage = (props) => {
 			await CustomersAPI.delete(id);
 			toast.success("Le client a bien été supprimé !");
 		} catch (error) {
-			toast.error("La suppression du client n'a pas fonctioné !");
+			toast.error("La suppression du client n'a pas fonctionée !");
 			setCustomers(originalCustomer);
 		}
 	};

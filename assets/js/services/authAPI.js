@@ -1,5 +1,8 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import {
+    LOGIN_URL
+} from "../config";
 
 /**
  * Requête HTTP d'authentification et stockage du token dans le localStorage et axios
@@ -7,7 +10,7 @@ import jwtDecode from "jwt-decode";
  */
 function authenticate(credentials) {
     return axios
-        .post(`https://127.0.0.1:8000/api/login_check`, credentials)
+        .post(LOGIN_URL, credentials)
         .then((response) => response.data.token)
         .then((token) => {
             // Je stocke le token dans mon localStorage
